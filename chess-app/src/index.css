@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Chess-specific styles */
+.chess-square {
+  @apply relative flex items-center justify-center;
+}
+
+.chess-square.light {
+  @apply bg-chess-light;
+}
+
+.chess-square.dark {
+  @apply bg-chess-dark;
+}
+
+.chess-square.highlighted {
+  @apply bg-chess-highlight bg-opacity-50;
+}
+
+.chess-square.last-move {
+  @apply bg-chess-move bg-opacity-30;
+}
+
+.chess-square.check {
+  @apply bg-chess-check bg-opacity-50;
+}
+
+.chess-piece {
+  @apply cursor-pointer select-none transition-transform duration-300;
+}
+
+.chess-piece:hover {
+  @apply scale-110;
+}
+
+.chess-piece.dragging {
+  @apply z-50 scale-110;
+}
+
+.move-indicator {
+  @apply absolute w-3 h-3 bg-black bg-opacity-30 rounded-full;
+}
+
+.move-indicator.capture {
+  @apply w-full h-full bg-transparent border-2 border-black border-opacity-30 rounded-full;
+}
