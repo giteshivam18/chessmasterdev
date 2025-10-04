@@ -67,7 +67,7 @@ export const useSocket = (): UseSocketReturn => {
     console.log(`Attempting to reconnect in ${delay}ms (attempt ${reconnectAttempts.current})`);
 
     reconnectTimeoutRef.current = window.setTimeout(() => {
-      connect();
+      (connect as any)();
     }, delay);
   }, [connect]);
 
@@ -105,7 +105,7 @@ export const useSocket = (): UseSocketReturn => {
 
   // Auto-connect on mount
   useEffect(() => {
-    connect();
+    (connect as any)();
 
     return () => {
       if (reconnectTimeoutRef.current) {
