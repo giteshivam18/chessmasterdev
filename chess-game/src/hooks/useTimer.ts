@@ -22,7 +22,7 @@ export const useTimer = (initialTime: number = 600000): UseTimerReturn => {
   const intervalRef = useRef<number>();
   const lastUpdateRef = useRef<number>(Date.now());
 
-  const start = useCallback((_initialTime?: number) => {
+  const start = useCallback(() => {
     if (!isRunning) {
       setIsRunning(true);
       lastUpdateRef.current = Date.now();
