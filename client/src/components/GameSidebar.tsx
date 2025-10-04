@@ -7,7 +7,7 @@ interface GameSidebarProps {
 }
 
 const GameSidebar: React.FC<GameSidebarProps> = ({ isSpectating = false }) => {
-  const { currentGame, playerColor, gameHistory, settings } = useGameStore();
+  const { currentGame, playerColor, gameHistory } = useGameStore();
 
   if (!currentGame) {
     return (

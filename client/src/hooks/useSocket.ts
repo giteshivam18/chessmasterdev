@@ -12,7 +12,6 @@ export const useSocket = () => {
     updateGameState,
     addMove,
     setDrawOffer,
-    resetGame,
   } = useGameStore();
 
   useEffect(() => {
@@ -139,6 +138,7 @@ export const useSocket = () => {
 
   return {
     socket: socketRef.current,
+    isConnected: useGameStore.getState().isConnected,
     createRoom,
     joinRoom,
     spectateRoom,

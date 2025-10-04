@@ -12,7 +12,7 @@ interface GameInterfaceProps {
 }
 
 const GameInterface: React.FC<GameInterfaceProps> = ({ isSpectating = false, onBack }) => {
-  const { currentGame, playerColor, settings } = useGameStore();
+  const { currentGame, playerColor } = useGameStore();
   const { makeMove, resign, offerDraw, respondDraw } = useSocket();
   const [showPromotionModal, setShowPromotionModal] = useState(false);
   const [pendingMove, setPendingMove] = useState<{ from: string; to: string } | null>(null);

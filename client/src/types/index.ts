@@ -67,4 +67,18 @@ export interface AppState {
   isCheckmate: boolean;
   isStalemate: boolean;
   drawOffer: { from: string; pending: boolean } | null;
+
+  // Actions
+  setPlayerName: (name: string) => void;
+  setPlayerColor: (color: 'white' | 'black' | null) => void;
+  setRoomId: (roomId: string | null) => void;
+  setConnectionStatus: (isConnected: boolean) => void;
+  updateGameState: (gameState: GameState) => void;
+  addMove: (move: Move) => void;
+  setSelectedSquare: (square: string | null) => void;
+  setLegalMoves: (moves: string[]) => void;
+  clearSelection: () => void;
+  updateSettings: (newSettings: Partial<GameSettings>) => void;
+  setDrawOffer: (drawOffer: { from: string; pending: boolean } | null) => void;
+  resetGame: () => void;
 }

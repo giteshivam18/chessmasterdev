@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Chess } from 'chess.js';
 import { useGameStore } from '../store/useGameStore';
 import { useSocket } from '../hooks/useSocket';
-import { Move } from '../types';
 
 interface ChessBoardProps {
   size?: number;
@@ -31,9 +30,6 @@ const ChessBoard: React.FC<ChessBoardProps> = ({ size = 400 }) => {
 
   const squareSize = size / 8;
 
-  const getSquareColor = (row: number, col: number): string => {
-    return (row + col) % 2 === 0 ? '#f0d9b5' : '#b58863';
-  };
 
   const getSquareName = (row: number, col: number): string => {
     const files = 'abcdefgh';
@@ -54,7 +50,7 @@ const ChessBoard: React.FC<ChessBoardProps> = ({ size = 400 }) => {
   };
 
   const isLastMove = (square: string): boolean => {
-    return lastMove && (lastMove.from === square || lastMove.to === square);
+    return !!(lastMove && (lastMove.from === square || lastMove.to === square));
   };
 
   const isSelected = (square: string): boolean => {
@@ -64,7 +60,7 @@ const ChessBoard: React.FC<ChessBoardProps> = ({ size = 400 }) => {
   const isInCheck = (square: string): boolean => {
     if (!isCheck) return false;
     const piece = chess.get(square as any);
-    return piece && piece.type === 'k' && piece.color === chess.turn();
+    return !!(piece && piece.type === 'k' && piece.color === chess.turn());
   };
 
   const handleSquareClick = (square: string) => {
