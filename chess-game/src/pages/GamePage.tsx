@@ -201,17 +201,22 @@ const GamePage: React.FC = () => {
             </h1>
             <div className={clsx(
               'flex items-center space-x-2 text-sm',
-              isConnected ? 'text-green-600' : 'text-red-600'
+              isConnected ? 'text-green-600' : 'text-yellow-600'
             )}>
               <div className={clsx(
                 'w-2 h-2 rounded-full',
-                isConnected ? 'bg-green-500' : 'bg-red-500'
+                isConnected ? 'bg-green-500' : 'bg-yellow-500'
               )} />
-              <span>{isConnected ? 'Connected' : 'Disconnected'}</span>
+              <span>{isConnected ? 'Connected' : 'Offline Mode'}</span>
             </div>
           </div>
           
           <div className="flex items-center space-x-2">
+            {!isConnected && (
+              <div className="text-xs text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 px-2 py-1 rounded">
+                Playing offline - moves are local only
+              </div>
+            )}
             <Button
               variant="ghost"
               size="sm"

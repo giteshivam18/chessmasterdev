@@ -11,7 +11,7 @@ interface UseSocketReturn {
   disconnect: () => void;
 }
 
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:3001';
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || null;
 
 export const useSocket = (): UseSocketReturn => {
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -23,6 +23,12 @@ export const useSocket = (): UseSocketReturn => {
 
   const connect = useCallback(() => {
     if (socket?.connected) return;
+    
+    // If no socket URL is configured, don't try to connect
+    if (!SOCKET_URL) {
+      console.log('No socket URL configured - running in offline mode');
+      return;
+    }
 
     const newSocket = io(SOCKET_URL, {
       transports: ['websocket'],
