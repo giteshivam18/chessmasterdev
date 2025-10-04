@@ -19,7 +19,7 @@ export const useTimer = (initialTime: number = 600000): UseTimerReturn => {
   const [isRunning, setIsRunning] = useState(false);
   const [activePlayer, setActivePlayer] = useState<'white' | 'black'>('white');
   
-  const intervalRef = useRef<number>();
+  const intervalRef = useRef<number | undefined>(undefined);
   const lastUpdateRef = useRef<number>(Date.now());
 
   const start = useCallback(() => {

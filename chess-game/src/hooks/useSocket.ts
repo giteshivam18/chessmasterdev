@@ -16,7 +16,7 @@ const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:3001';
 export const useSocket = (): UseSocketReturn => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
-  const reconnectTimeoutRef = useRef<number>();
+  const reconnectTimeoutRef = useRef<number | undefined>(undefined);
   const reconnectAttempts = useRef(0);
   const maxReconnectAttempts = 5;
   const baseReconnectDelay = 1000; // 1 second
