@@ -27,7 +27,7 @@ export const useTimer = (initialTime: number = 600000): UseTimerReturn => {
       setIsRunning(true);
       lastUpdateRef.current = Date.now();
     }
-  }, [isRunning]);
+  }, []);
 
   const pause = useCallback(() => {
     setIsRunning(false);

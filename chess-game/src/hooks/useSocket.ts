@@ -21,7 +21,7 @@ export const useSocket = (): UseSocketReturn => {
   const maxReconnectAttempts = 5;
   const baseReconnectDelay = 1000; // 1 second
 
-  const connect = useCallback((_socket?: Socket) => {
+  const connect = useCallback(() => {
     if (socket?.connected) return;
 
     const newSocket = io(SOCKET_URL, {
@@ -53,7 +53,7 @@ export const useSocket = (): UseSocketReturn => {
     });
 
     setSocket(newSocket);
-  }, [socket]);
+  }, []);
 
   const scheduleReconnect = useCallback(() => {
     if (reconnectAttempts.current >= maxReconnectAttempts) {

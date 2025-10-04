@@ -37,7 +37,6 @@ const GamePage: React.FC = () => {
     isCheck, 
     moves, 
     makeMove, 
-    getLegalMoves,
     isGameOver,
     gameResult 
   } = useChessGame();
@@ -186,10 +185,10 @@ const GamePage: React.FC = () => {
     }
   }, [isGameOver, gameResult, playVictory, playDefeat, playDraw]);
 
-  // Get legal moves for selected square
-  const selectedSquareLegalMoves = selectedSquare 
-    ? getLegalMoves(selectedSquare).map(move => move.to)
-    : [];
+  // Get legal moves for selected square (currently unused but available for future use)
+  // const selectedSquareLegalMoves = selectedSquare 
+  //   ? getLegalMoves(selectedSquare).map(move => move.to)
+  //   : [];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
